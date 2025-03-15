@@ -79,6 +79,42 @@ header {
     padding: 30px 0;
 }
 
+
+/* Бургер-меню */
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.burger span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: white;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+
+/* Затемняющий фон */
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 900;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -87,8 +123,10 @@ header {
 }
 
 .logo {
-    width: 88px;
-    height: 88px;
+    min-width: 88px;
+    min-height: 88px;
+    max-width: 88px;
+    max-height: 88px;
 }
 
 .logo img {
@@ -353,7 +391,8 @@ h3 {
 }
 
 .bitcoin_info {
-    width: 756px;
+    width: 100%;
+    max-width: 756px;
     margin: 0 auto;
     margin-top: 46px;
 }
@@ -376,7 +415,7 @@ h3 {
 }
 
 .faq {
-    margin: 66px 72px;
+    margin: 66px 0 72px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -541,4 +580,373 @@ h5 {
 .after svg {
     width: 100px;
     height: auto;
+}
+
+@media (max-width:1450px) {
+    header nav {
+        gap: 20px;
+    }
+    .wrapper,
+    .container {
+        padding: 0 45px;
+    }
+}
+
+@media (max-width:1410px) {
+    .main_img {
+        width: 520px;
+        height: unset;
+    }
+    .sfera {
+        gap: 20px;
+    }
+}
+
+@media (max-width:1280px) {
+    h1 {
+        font-size: 39px;
+        line-height: 48px;
+    }
+    .main_title p {
+        font-size: 22px;
+        line-height: 27px;
+    }
+    .main_title {
+        max-width: 600px;
+    }
+    .text_by {
+        font-size: 22px;
+        line-height: 23px;
+    }
+    h2 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+    h4 {
+        font-size: 26px;
+        line-height: 33px;
+    }
+    .sfera_box p {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    h3 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .indicators_info p {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .indicators_info {
+        gap: 28px;
+    }
+    .accordion-header {
+        font-size: 22px;
+        padding: 18px 16px 18px 30px;
+    }
+    header {
+        padding: 26px 0;
+    }
+    .sfera {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 70px 20px;
+    }
+}
+
+@media (max-width:1140px) {
+    .main_content {
+        flex-wrap: wrap;
+    }
+    .main_title {
+        width: 100%;
+        max-width: unset;
+    }
+    .main_img {
+        margin: 0 auto;
+        right: 0;
+    }
+    .main {
+        padding: 45px 0 0;
+    }
+    #indicators {
+        padding: 0 0 80px;
+    }
+    .indicators_flex {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    header nav a {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .burger {
+        display: flex;
+    }
+    .nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 70%;
+        /* Меню теперь занимает 70% ширины экрана */
+        background: #293440;
+        /* Градиентный фон */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding: 50px 0;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        /* Плавная анимация */
+        z-index: 1000;
+        box-shadow: -10px 0 15px rgba(0, 0, 0, 0.3);
+        /* Тень для отделения меню */
+        border-left: 3px solid #f39c12;
+        /* Акцентная линия слева */
+    }
+    /* Элементы ссылок в меню */
+    .nav a {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        padding: 15px;
+        width: 80%;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        /* Плавные эффекты при наведении */
+        border-radius: 10px;
+        /* Скругленные углы */
+        background-color: rgba(255, 255, 255, 0.1);
+        /* Легкий фон */
+    }
+    /* Эффект наведения на ссылки */
+    .nav a:hover {
+        color: #f39c12;
+        /* Подсветка текста */
+        background-color: rgba(255, 255, 255, 0.2);
+        /* Более заметный фон */
+        transform: scale(1.05);
+        /* Легкое увеличение */
+    }
+    /* Стили для активного состояния */
+    .nav.active {
+        transform: translateX(0);
+        /* Открытое меню */
+    }
+    /* Стили для бургера */
+    .burger span {
+        display: block;
+        width: 30px;
+        height: 4px;
+        background: white;
+        border-radius: 3px;
+        transition: 0.3s ease;
+    }
+    /* Анимация для бургера при открытии меню */
+    .burger.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+    /* Затемнение фона */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 900;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+    /* Когда меню активно */
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+    /* От 1040px до 778px - 80% ширины */
+    @media (min-width: 778px) {
+        .nav {
+            width: 80%;
+        }
+    }
+    /* До 778px - 100% ширины */
+    /* Анимация открытия меню */
+    .nav.active {
+        transform: translateX(0);
+    }
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+    /* Анимация бургера */
+    .burger.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 830px) {
+    .bit_inf {
+        display: flex;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 778px) {
+    .nav {
+        width: 100%;
+    }
+    header {
+        padding: 10px 0;
+    }
+    .wrapper,
+    .container {
+        padding: 0 26px;
+    }
+    h1 {
+        font-size: 26.5px;
+        line-height: 32px;
+        color: #FFFFFF;
+    }
+    .text_by {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 12px;
+    }
+    .main_title hr {
+        margin: 21px 0;
+    }
+    .main_title p {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+}
+
+@media (max-width: 670px) {
+    .main_img {
+        width: 100%;
+    }
+    .sfera_box {
+        width: 100%;
+        padding: 40px 30px 12px 30px;
+    }
+    .sfera_box img {
+        width: 48px;
+        height: 48px;
+        top: -26px;
+    }
+    h2 {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    h4 {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 18px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    h4 br {
+        display: none;
+    }
+    .sfera_box p {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    .sfera {
+        margin-top: 50px;
+        gap: 50px;
+    }
+    h3 {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 27px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    .indicators_info {
+        gap: 13px;
+    }
+    .indicators_info p {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    .indicators_box span {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 44px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    #indicators::before {
+        width: 248.52px;
+        height: 227px;
+        left: -120px;
+        bottom: 50px;
+        background-size: 100%;
+    }
+    #indicators::after {
+        width: 197.4px;
+        height: 180px;
+        background-size: 100%;
+        right: -90px;
+        bottom: 600px;
+    }
+    .indicators {
+        margin-top: 80px;
+    }
+    .footer_link {
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+    .accordion-header {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 15px;
+        /* or 94% */
+        color: #FFFFFF;
+        padding: 8px 26px;
+    }
+    .icon {
+        font-size: 32px;
+        margin-left: 20px;
+        line-height: normal;
+    }
 }

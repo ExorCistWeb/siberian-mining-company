@@ -41,3 +41,29 @@ $(document).ready(function() {
         }, 500);
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav");
+    const overlay = document.querySelector(".overlay");
+    const body = document.body; // Получаем элемент body
+
+    burger.addEventListener("click", () => {
+        burger.classList.toggle("active");
+        nav.classList.toggle("active");
+        overlay.classList.toggle("active");
+
+        // Блокируем прокрутку страницы, если меню открыто
+        if (nav.classList.contains("active")) {
+            body.style.overflow = "hidden";
+        } else {
+            body.style.overflow = "auto"; // Восстанавливаем прокрутку
+        }
+    });
+
+    overlay.addEventListener("click", () => {
+        nav.classList.remove("active");
+        burger.classList.remove("active");
+        overlay.classList.remove("active");
+        body.style.overflow = "auto"; // Восстанавливаем прокрутку при закрытии меню
+    });
+});
